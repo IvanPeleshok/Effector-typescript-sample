@@ -5,7 +5,7 @@ interface IRootScore {
     score: number;
 }
 
-export const RootScore = (props: IRootScore) => {
+export const CounterScore = (props: IRootScore) => {
     return (
         <div className="root__score">{props.score}</div>
     )

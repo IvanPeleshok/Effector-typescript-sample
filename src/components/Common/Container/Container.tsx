@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import './Container.scss';
 
-interface RootContainer {
+interface IContainer {
     children: ReactNode;
 }
 
-export const RootContainer = (props: RootContainer) => {
+export const Container = (props: IContainer) => {
     return (
         <div className="root__container">{props.children}</div>
     );

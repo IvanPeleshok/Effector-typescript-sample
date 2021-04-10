@@ -1,4 +1,5 @@
-
+@import url('./assets/scss/Reset.scss');
+@import url('./assets//scss//Alertify.scss');
 
 body {
 	font-family: 'Open Sans';
@@ -7,6 +8,7 @@ body {
 
 .app-content {
 	display: flex;
+	flex-direction: column;
 
 	& .content {
 		position: relative;
