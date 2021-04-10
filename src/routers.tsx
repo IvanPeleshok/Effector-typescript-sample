@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { CounterContainer } from "./components/Counter/CounterContainer";
 import { SampleContainer } from "./components/Sample/SampleContainer";
 import { Home } from "./components/Home/Home";
+import { ForwardContainer } from './components/Forward/ForwardContainer';
 
 interface IOption {
     exact?: boolean;
@@ -30,9 +31,14 @@ export const routers: IRouter[] = [
         component: () => <CounterContainer />,
     },
     {
-        name: 'Item',
-        path: '/item',
+        name: 'List',
+        path: '/list',
         component: () => <SampleContainer />,
+    },
+    {
+        name: 'Forward',
+        path: '/forward',
+        component: () => <ForwardContainer />,
     },
     {
         path: '*',
