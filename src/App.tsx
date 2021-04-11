@@ -9,8 +9,8 @@ const App = memo(() => {
     <div className="app-content">
       <Sidebar>
         <Switch>
-            {routers.map(router => (
-              <Route path={router.path} render={router.component} key={router.path} {...router.option} />
+            {routers.map((router, i) => (
+              <Route key={i} {...router} />
             ))}
         </Switch>
       </Sidebar>

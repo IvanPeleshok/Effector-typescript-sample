@@ -5,43 +5,38 @@ import { SampleContainer } from "./components/Sample/SampleContainer";
 import { Home } from "./components/Home/Home";
 import { ForwardContainer } from './components/Forward/ForwardContainer';
 
-interface IOption {
-    exact?: boolean;
-}
 
 export interface IRouter {
     name?: string;
     path: string,
-    component: () => React.ReactNode;
-    option?: IOption;
+    render: () => React.ReactNode;
+    exact?: boolean;
 }
 
 export const routers: IRouter[] = [
     {   
         name: 'Main',
         path: '/',
-        component: () => <Home />,
-        option: {
-            exact: true
-        }
+        render: () => <Home />,
+        exact: true
     },
     {   
         name: 'Counter',
         path: '/counter',
-        component: () => <CounterContainer />,
+        render: () => <CounterContainer />,
     },
     {
         name: 'List',
         path: '/list',
-        component: () => <SampleContainer />,
+        render: () => <SampleContainer />,
     },
     {
         name: 'Forward',
         path: '/forward',
-        component: () => <ForwardContainer />,
+        render: () => <ForwardContainer />,
     },
     {
         path: '*',
-        component: () => <Redirect to='/' />
+        render: () => <Redirect to='/' />
     }
 ]
