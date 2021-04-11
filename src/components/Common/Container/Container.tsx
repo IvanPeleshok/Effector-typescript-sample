@@ -7,6 +7,10 @@ interface IContainer {
 
 export const Container = (props: IContainer) => {
     return (
-        <div className="root__container">{props.children}</div>
+        <div className="root">
+            <div className="root__container">
+                {props.children}
+            </div>
+        </div>
     );
 };

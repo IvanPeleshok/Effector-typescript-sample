@@ -1,21 +1,27 @@
 import { createDomain, forward } from 'effector';
-
+import { ReposController } from '../../api/api';
+import { alert } from '../../utils/showAlert';
 
 class ForwardLogic {
+    label = "Enter profile name on github"    
     domain = createDomain('forwardDomain');
-    click = this.domain.createEvent<string>('click');
+    submitForm = this.domain.createEvent<string>('submitForm');
 
-    $store = this.domain.createStore('forward ', {name: "$store", updateFilter: (upate,store) => {
-        console.log(upate);
-        console.log(store);
-        return false;
+    getReposFx = this.domain.createEffect('getReposFx', {handler: async (name: string) => {
+        try {
+            return await ReposController.getRepos(name);
+        } catch {
+            alert('This profile does not exist');
+        }
     }});
 
-    unwStore = this.$store.watch(console.log);
-    unEvent = this.click.watch(console.log);
+    $store = this.domain.createStore(null, {name: "$store"});
+
+    unWatchDone = this.getReposFx.done.watch(({params}) => alert('Profile:' + params));
 
     init = () => {
-        forward({from: this.click, to: this.$store});
+        forward({from: this.submitForm, to: this.getReposFx});
+        forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
     }
 }
 

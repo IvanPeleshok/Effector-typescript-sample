@@ -1,5 +1,5 @@
 {
-  "name": "any-project",
+  "name": "effector-sample",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,10 +17,6 @@
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.6",
-    "@types/react-select": "^3.0.22",
-    "@types/redux-devtools-extension": "^2.13.2",
-    "@types/redux-thunk": "^2.1.0",
-    "@types/yup": "^0.29.8",
     "alertifyjs": "^1.13.1",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
@@ -31,10 +27,7 @@
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "typescript": "^3.7.5",
-    "yup": "^0.29.3"
+    "typescript": "^3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",

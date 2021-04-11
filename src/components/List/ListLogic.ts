@@ -1,8 +1,8 @@
 import { createDomain } from 'effector';
 
 
-class ChatLogic {
-    domain = createDomain('sample');
+class ListLogic {
+    domain = createDomain('list');
 
     onChangeValue = this.domain.createEvent<string>();
     onPressEnter = this.domain.createEvent<string>();
@@ -14,7 +14,6 @@ class ChatLogic {
     .on(this.onPressEnter, (state, payload) => {
         return [...state, payload];
     });
-
 }
 
-export default new ChatLogic();
+export default new ListLogic();

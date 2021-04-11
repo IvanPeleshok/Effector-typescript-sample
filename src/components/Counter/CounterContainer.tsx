@@ -8,6 +8,7 @@ export const CounterContainer = () => {
     let score = useStore(logic.$store);
 
     useEffect(() => {
+        // api for update
     }, [score]);
 
     return (

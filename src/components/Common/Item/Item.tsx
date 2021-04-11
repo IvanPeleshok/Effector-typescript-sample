@@ -2,11 +2,11 @@ import React from 'react';
 import './Item.scss';
 
 interface IItem { 
-    message: string;
+    text: string;
 }
 
 export const Item = (props: IItem) => {
     return (
-        <div className='item'>{props.message}</div>
+        <div className='item'>{props.text}</div>
     )
 }

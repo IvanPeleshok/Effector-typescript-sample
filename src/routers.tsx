@@ -1,9 +1,9 @@
 import React from 'react';
 import { Redirect } from "react-router";
-import { CounterContainer } from "./components/Counter/CounterContainer";
-import { SampleContainer } from "./components/Sample/SampleContainer";
 import { Home } from "./components/Home/Home";
+import { CounterContainer } from "./components/Counter/CounterContainer";
 import { ForwardContainer } from './components/Forward/ForwardContainer';
+import { ListContainer } from './components/List/ListContainer';
 
 
 export interface IRouter {
@@ -28,7 +28,7 @@ export const routers: IRouter[] = [
     {
         name: 'List',
         path: '/list',
-        render: () => <SampleContainer />,
+        render: () => <ListContainer />,
     },
     {
         name: 'Forward',

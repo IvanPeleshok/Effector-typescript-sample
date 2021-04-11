@@ -1,5 +1,13 @@
+.root {
+    border: 1px dotted solid red;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .root__container {
     margin: 10px auto;
-    border: 1px dotted solid red;
     width: 100%;
 }

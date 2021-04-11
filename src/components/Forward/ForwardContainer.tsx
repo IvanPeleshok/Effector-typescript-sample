@@ -5,13 +5,18 @@ import { useStore } from 'effector-react';
 import { useEffect } from 'react';
 
 export const ForwardContainer = () => {
-    const store = useStore(logic.$store);
+    const list = useStore(logic.$store);
     
     useEffect(() => {
         logic.init();
     }, []);
 
     return (
-        <view.button label="Forward" onClick={() => logic.click(store + store)} />
+        <view.container>
+            <view.input label={logic.label} onSubmit={logic.submitForm}/>
+            {list?.map((item, i) => (
+                <view.itemOfList text={item.name} key={i} />
+            ))}
+        </view.container>
     );
 };
