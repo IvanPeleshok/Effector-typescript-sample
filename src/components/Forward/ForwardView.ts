@@ -6,7 +6,7 @@ import { Item } from "../Common/Item/Item";
 class ForwardView {
     button = Button;
     container = Container;
-    itemOfList = Item;
+    item = Item;
     input = Input;
 }
 

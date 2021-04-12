@@ -21,7 +21,7 @@ export const Input = (props: IInput) => {
     }
 
     return (
-        <TextField fullWidth id="outlined-basic" variant="outlined"
+        <TextField fullWidth id="outlined-basic" variant="outlined" autoComplete='off'
             label={props.label ?? 'Текстовое поле'} ref={ref} onKeyDown={submit} />
     )
 }
