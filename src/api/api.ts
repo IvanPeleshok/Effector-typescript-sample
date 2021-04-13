@@ -7,7 +7,7 @@ const instance = Axios.create({
   },
 });
 
-export const ReposController = {
+export const reposController = {
   getRepos(name: string) {
     return instance.get<AxiosResponse<any>>(`${name}/repos`);
   }

@@ -1,14 +1,14 @@
 import React from 'react';
-import view from './ForwardView';
-import logic from './ForwardLogic';
+import view from './ReposView';
+import logic from './ReposLogic';
 import { useStore } from 'effector-react';
 import { useEffect } from 'react';
 
-export const ForwardContainer = () => {
+export const ReposContainer = () => {
     const list = useStore(logic.$store);
     
     useEffect(() => {
-        logic.sample();
+        logic.init();
     }, []);
 
     return (
