@@ -1,6 +1,6 @@
-import { attach, createDomain, createStore, forward, guard, sample } from 'effector';
+import { attach, createDomain, createStore, forward, guard, restore, sample, split } from 'effector';
 import { reposController } from '../../api/api';
-import { alert } from '../../utils/showAlert';
+import { alert, showAlert } from '../../utils/showAlert';
 
 class ReposLogic {
     label = "Enter profile name on github"   
@@ -48,9 +48,13 @@ class ReposLogic {
     //         fn: ({data}) => data,
     //         target: this.$store
     //     });
-
     // //   forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store}); // can be replaced with last sample
     // };
+
+    // init = () => {
+    //     sample(this.$defaultName, [this.submitForm, this.submitForm], (source, clock) => this.getReposFx(source));
+    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
+    // }
 
     // init = () => {
     //     let createRequest = attach({
@@ -63,13 +67,49 @@ class ReposLogic {
     // };
 
     // init = () => {
+    //     let create = attach({
+    //         effect: this.getReposFx,
+    //         source: this.$defaultName
+    //     });
+    //     create();
+    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store})
+    // }
+
+
+
+    // init = () => {
     //     // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length > 10, target: this.getReposFx});
     //     // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length < 10, target: this.getReposFx});
     //     let newEvent = guard({source: this.submitForm, filter: (params) => params.length > 5, target: this.getReposFx});
     //     forward({from: newEvent.doneData.map(({data}) => data), to: this.$store});
     // }   
 
+    // showAlertFx = this.domain.effect('showAlertFx', {
+    //     handler: 
+    //         (params: string) => {
+    //             alert('Unknown parmas: ' + params);
+    //         }
+    // });
+
+    // init = () => {
+    //     split({
+    //         source: this.submitForm,
+    //         match: {
+    //             zerobias: params => params === 'zerobias',
+    //         },
+    //         cases: {
+    //             zerobias: this.getReposFx,
+    //             __: this.showAlertFx,
+    //         }
+    //     });
+    // }
    
+    // init = () => {
+    //     forward({from: this.submitForm, to: this.getReposFx});
+    //     const store = restore(this.getReposFx.doneData, null);
+    //     forward({from: store.map((store) => store?.data), to: this.$store});
+    // }
+
 }
 
 export default new ReposLogic();

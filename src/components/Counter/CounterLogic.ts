@@ -1,5 +1,4 @@
-import { createDomain} from 'effector';
-import { reposController } from '../../api/api';
+import { createApi, createDomain} from 'effector';
 import { alert } from '../../utils/showAlert';
 
 class RootLogic {
@@ -39,6 +38,15 @@ class RootLogic {
     // .on([this.inc], (store, payload) => store + payload)
     // .on(this.dec, (store) => store - 1)
     // .reset([this.reset]);
+
+    // $store = this.domain.store<number>(0, {name: "$store"});
+    // api = createApi(this.$store, {
+    //     inc: (state, payload: number) => state + payload,
+    //     dec: (state) => state - 1,
+    //     reset: () => this.$store.defaultState
+    // });
+
+    // merge
 }
 
 export default new RootLogic();
