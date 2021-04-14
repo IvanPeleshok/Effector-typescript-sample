@@ -31,10 +31,10 @@ class ReposLogic {
     $store = this.domain.store(null, {name: "$store"});
     $defaultName = this.domain.store('zerobias', {name: "$defaultName"});
 
-    init = () => {
-        forward({from: this.submitForm, to: this.getReposFx});
-        forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
-    };
+    // init = () => {
+    //     forward({from: this.submitForm, to: this.getReposFx});
+    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
+    // };
 
     // init = () => {
     //     sample({
@@ -75,14 +75,24 @@ class ReposLogic {
     //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store})
     // }
 
-
-
     // init = () => {
-    //     // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length > 10, target: this.getReposFx});
-    //     // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length < 10, target: this.getReposFx});
-    //     let newEvent = guard({source: this.submitForm, filter: (params) => params.length > 5, target: this.getReposFx});
-    //     forward({from: newEvent.doneData.map(({data}) => data), to: this.$store});
-    // }   
+    //     let event = guard({
+    //         source: this.$store,
+    //         filter: (s) => s.length > 10,
+    //     });
+    //     forward({from: this.$store, to: this.event});
+    //     event.watch(() => alert('$store updated'));
+
+    //     forward({from: this.submitForm, to: this.getReposFx});
+    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
+    // }
+
+    init = () => {
+        // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length > 10, target: this.getReposFx});
+        // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length < 10, target: this.getReposFx});
+        let newEvent = guard({source: this.submitForm, filter: (params) => params.length > 5, target: this.getReposFx});
+        forward({from: newEvent.doneData.map(({data}) => data), to: this.$store});
+    }   
 
     // showAlertFx = this.domain.effect('showAlertFx', {
     //     handler: 

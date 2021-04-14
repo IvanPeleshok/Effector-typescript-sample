@@ -46,7 +46,7 @@ class RootLogic {
     //     reset: () => this.$store.defaultState
     // });
 
-    // merge
+    // 
 }
 
 export default new RootLogic();
