@@ -3,7 +3,7 @@ import { reposController } from '../../api/api';
 import { alert, showAlert } from '../../utils/showAlert';
 
 class ReposLogic {
-    label = "Enter profile name on github"   
+    label = "Enter profile name on github"; 
 
     domain = createDomain('forwardDomain');
     submitForm = this.domain.event<string>('submitForm');
@@ -30,6 +30,7 @@ class ReposLogic {
 
     $store = this.domain.store(null, {name: "$store"});
     $defaultName = this.domain.store('zerobias', {name: "$defaultName"});
+
 
     // init = () => {
     //     forward({from: this.submitForm, to: this.getReposFx});

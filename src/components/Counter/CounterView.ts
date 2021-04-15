@@ -7,7 +7,7 @@ import { Button } from "../Common/Button/Button";
 class RootView {
     container = Container;
     button = Button;
-    score = CounterScore;
+    score = CounterScore
     body = CounterBody;
     reset = CounterReset;
 }
