@@ -5,7 +5,7 @@ class RootLogic {
     incLabel: string = "+";
     decLabel: string = "-";
     
-    domain = createDomain('counterDomain');
+    domain = createDomain('counterLogic');
 
     inc = this.domain.event<number>('inc');
     dec = this.domain.event<number>('dec');
@@ -25,7 +25,7 @@ class RootLogic {
         filterEvent = this.inc.filter({fn: (payload) =>  this.$store.getState() + payload > 2});
         // filterMap
         filterMapEvent = this.inc.filterMap((payload) => {
-            if (this.$store.getState() + payload > 5) return 'inc.filterMap event';
+            if (this.$store.getState() + payload > 5) return payload;
         });
 
     // Store

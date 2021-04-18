@@ -3,34 +3,37 @@ import { reposController } from '../../api/api';
 import { alert, showAlert } from '../../utils/showAlert';
 
 class ReposLogic {
+    constructor() {
+        forward({from: this.getReposFx.fail, to: this.alertFx});
+    }
+
     label = "Enter profile name on github"; 
 
     domain = createDomain('forwardDomain');
     submitForm = this.domain.event<string>('submitForm');
-
     
-    event = this.domain.event()
-    getReposFx = this.domain.effect('getReposFx', {handler: async (name: string) => {
-        try {
-            return await reposController.getRepos(name);
-        } catch {
-            alert('This profile does not exist');
-        }
+    event = this.domain.event();
+    
+    alertFx = this.domain.effect('alertFx', {
+        handler: 
+            () => alert('This profile does not exist')
+    });
+
+    getReposFx = this.domain.effect('getReposFx', {
+        handler: 
+            async (name: string) => {
+                let res = await reposController.getRepos(name);
+                return res;
     }});
 
     // this.getReposFx.use(async (params) => {
     //     try {
-    //         return await ReposController.getRepos(params);
-    //     } catch {
-    //         alert('This profile does not exist');
-    //     }
+    //          let res = await reposController.getRepos(name);
+    //          return res;
     // });
-
-
 
     $store = this.domain.store(null, {name: "$store"});
     $defaultName = this.domain.store('zerobias', {name: "$defaultName"});
-
 
     // init = () => {
     //     forward({from: this.submitForm, to: this.getReposFx});
