@@ -2,7 +2,6 @@ import React from 'react';
 import { useStore } from 'effector-react';
 import view from './CounterView';
 import logic from './CounterLogic';
-import { useEffect } from 'react';
 
 export const CounterContainer = () => {
     let score = useStore(logic.$store);

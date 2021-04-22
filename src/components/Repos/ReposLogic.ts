@@ -12,8 +12,6 @@ class ReposLogic {
     domain = createDomain('forwardDomain');
     submitForm = this.domain.event<string>('submitForm');
     
-    event = this.domain.event();
-    
     alertFx = this.domain.effect('alertFx', {
         handler: 
             () => alert('This profile does not exist')
@@ -45,58 +43,59 @@ class ReposLogic {
 
     // init = () => {
     //     sample({clock: this.submitForm, source: this.$defaultName, target: this.getReposFx});
-    //     sample({clock: this.getReposFx.doneData, fn: ({data}) => data,target: this.$store});
+    //     sample({clock: this.getReposFx.doneData, fn: ({data}) => data, target: this.$store});
 
     //     alert(`Когда будет вызвано событие, то значение хранилища $defaultName будет передано в эффект с вызовом,
     //         после чего, когда придёт ответ с сервера, его необходимое содержимое будет помещено в хранилище`);
     // };
 
     // init = () => {
-    //     sample(this.$defaultName, [this.submitForm, this.submitForm], (source, clock) => this.getReposFx(source));
-    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
-    //     alert(`Когда будет вызвано любое событие в массиве, то значение хранилища $defaultName будет передано в эффект с вызовом,
-    //         после чего, когда придёт ответ с сервера, его необходимое содержимое будет помещено в хранилище`);
+    //     let event = this.domain.event<void>("event");
+    //     sample(this.$defaultName, this.submitForm, (source, clock) => event());
     // }
 
     // init = () => {
     //     let createRequest = attach({effect: this.getReposFx, 
-    //                                 source: combine({a: this.$defaultName}), 
+    //                                 source: this.$defaultName, 
     //                                 mapParams: (params: {name: string}, source) => params.name});
-    //     createRequest({name: this.$defaultName.defaultState});
+    //     createRequest({name: 'github'});
     //     forward({from: createRequest.doneData.map(({data}) => data), to: this.$store});
 
     //     alert(`Возможность создания нового эффекта `);
     // };
 
     // init = () => {
-    //     let create = attach({effect: this.getReposFx, source: this.$defaultName});
-    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
-    //     create();
+    //     let effect = attach({effect: this.getReposFx, source: this.$defaultName});
+    //     forward({from: effect.doneData.map(({data}) => data), to: this.$store});
+    //     effect();
 
     //     alert(`Создан новый эффект, который берёт из стора значение и передаёт, как аргумент для вызова`);
     // }
 
     // init = () => {
-    //     let event = guard({
-    //         source: this.$store,
-    //         filter: (s) => s.length > 10,
-    //     });
-    //     forward({from: this.$store, to: this.event});
-    //     event.watch(() => alert('$store updated'));
-
-    //     forward({from: this.submitForm, to: this.getReposFx});
-    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
-
-    //     alert('Событие создастся, когда массив в data length > 10');
-    // }
-
-    // init = () => {
-    //     // let newEvent = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length > 10, target: this.getReposFx});
+    //     // let newEffect = guard({source: sample(this.$defaultName, this.submitForm), filter: (state) => state.length < 10, target: this.getReposFx});
     //     let effect = guard({source: this.submitForm, filter: (params) => params.length > 5, target: this.getReposFx});
     //     forward({from: effect.doneData.map(({data}) => data), to: this.$store});
     //     // forward({from: this.submitForm.filter({fn: (params) => params.length > 5}), to: this.getReposFx})
     //     alert(`Создан эффект, который будет вызван, если введено больше 5 символов`);
     // }   
+
+    // init = () => {
+    //     sample({
+    //         clock: guard({
+    //             clock: this.submitForm,
+    //             filter: params => params.length > 5,
+    //         }),
+    //         source: this.$defaultName,
+    //         fn: (source, clock) => clock,
+    //         target: attach({
+    //             effect: this.getReposFx,
+    //             source: this.$defaultName,
+    //             mapParams: (params, store) => params + store
+    //         })
+    //     });
+    //     forward({from: this.getReposFx.doneData.map(({data}) => data), to: this.$store});
+    // }
 
 
     // init = () => {
